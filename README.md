@@ -1,5 +1,7 @@
 # PAINS
 
+Usage pfilter.pl input_structures.sdf
+
 Work in progress- haven't fully tested.  Parallel processing not set up yet.
 
 
