@@ -23,7 +23,7 @@ searchMols(\@molecules); #run the PAINS search
 
 sub searchMols {
 	foreach my $sdfMol ( @{$_[0]} )  {
-	my $snid = $sdfMol->attr("sdf/data")->{SNID}; 	#Some unique SDF identifier
+	my $snid = $sdfMol->attr("sdf/data")->{SNID}; 	#Some unique SDF identifier.  In my case this is a field called SNID
 	next if ( $painHits->{$snid} );  #Skip if it's already been red-flagged
 		foreach my $warning ( keys %$pains ) {
 		if ( $pains->{$warning}->match($sdfMol) ) {
