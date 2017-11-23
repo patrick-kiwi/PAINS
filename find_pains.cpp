@@ -29,25 +29,24 @@ int main(int argc,char **argv) {
 
 
 
-//iterate over target molecules and SMARTS fingerprints
+//Iterate over SMILES targets and SMARTS fingerprints
 
     for (map<int, string>::iterator itt = molmap.begin(); itt != molmap.end(); itt++) { 
 static int c = 0;
-//cout << "Input smiles: " << itt->second << "\n";
         conv.ReadString(&mol, itt->second);
         
     
         for (map<string, string>::iterator it = ffa.begin(); it != ffa.end(); it++) {
-            OBSmartsPattern sm;  //moving this outside the loop created a memory leak
-            sm.Init(it->second);  //capture the smatrs match
+            OBSmartsPattern sm; 
+            sm.Init(it->second);  
             if  ( sm.IsValid() and sm.HasMatch(mol) ) 
                 cout << "Found a match: " << it->first << "  Parent mol: " << itt->second << "\n";
         }
         
         
          for (map<string, string>::iterator it = ffb.begin(); it != ffb.end(); it++) {
-            OBSmartsPattern sm;  //moving this outside the loop created a memory leak
-            sm.Init(it->second);  //capture the smatrs match
+            OBSmartsPattern sm; 
+            sm.Init(it->second);  
             if  ( sm.IsValid() and sm.HasMatch(mol) ) 
                 cout << "Found a match: " << it->first << "  Parent mol: " << itt->second << "\n";
         }
@@ -55,8 +54,8 @@ static int c = 0;
         
         
          for (map<string, string>::iterator it = ffc.begin(); it != ffc.end(); it++) {
-            OBSmartsPattern sm;  //moving this outside the loop created a memory leak
-            sm.Init(it->second);  //capture the smatrs match
+            OBSmartsPattern sm;  
+            sm.Init(it->second);  
             if  ( sm.IsValid() and sm.HasMatch(mol) ) 
                 cout << "Found a match: " << it->first << "  Parent mol: " << itt->second << "\n";
         }
